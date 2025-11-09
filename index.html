@@ -1,4 +1,129 @@
-<html>
-  <head><title>Hello</title></head>
-  <body><p>Hello</p></body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChronoZen</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Lato&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <header>
+        <h1>ChronoZen</h1>
+    </header>
+    <main>
+        <div id="clock" class="feature-card active">
+            <h2>Clock</h2>
+            <div id="clock-display"></div>
+        </div>
+        <div id="timer" class="feature-card">
+            <h2>Timer</h2>
+            <div id="timer-display" class="time-display">00:00:00</div>
+            <div class="timer-inputs">
+                <input type="number" id="hours" placeholder="HH" min="0" max="23">
+                <input type="number" id="minutes" placeholder="MM" min="0" max="59">
+                <input type="number" id="seconds" placeholder="SS" min="0" max="59">
+            </div>
+            <div class="timer-controls">
+                <button id="start-timer">Start</button>
+                <button id="pause-timer">Pause</button>
+                <button id="reset-timer">Reset</button>
+            </div>
+        </div>
+        <div id="stopwatch" class="feature-card">
+            <h2>Stopwatch</h2>
+            <div id="stopwatch-display" class="time-display">00:00:00.000</div>
+            <div class="stopwatch-controls">
+                <button id="start-stopwatch">Start</button>
+                <button id="pause-stopwatch">Pause</button>
+                <button id="reset-stopwatch">Reset</button>
+                <button id="lap-stopwatch">Lap</button>
+            </div>
+            <ul id="laps-list"></ul>
+        </div>
+        <div id="world-clock" class="feature-card">
+            <h2>World Clock</h2>
+            <div class="world-clock-controls">
+                <select id="timezone-select"></select>
+                <button id="add-world-clock">Add Clock</button>
+            </div>
+            <div id="world-clock-container"></div>
+        </div>
+        <div id="alarm" class="feature-card">
+            <h2>Alarm</h2>
+            <div class="alarm-controls">
+                <input type="time" id="alarm-time">
+                <button id="set-alarm">Set Alarm</button>
+            </div>
+            <ul id="alarms-list"></ul>
+        </div>
+        <div id="settings" class="feature-card">
+            <h2>Settings</h2>
+            <div id="settings-display" class="settings-container">
+                <div class="setting-item">
+                    <label for="app-name">App Name:</label>
+                    <input type="text" id="app-name" value="ChronoZen">
+                </div>
+                <div class="setting-item">
+                    <label for="app-logo">App Logo URL:</label>
+                    <input type="text" id="app-logo" placeholder="Enter image URL">
+                </div>
+                <div class="setting-item">
+                    <label for="date-toggle">Show Date:</label>
+                    <input type="checkbox" id="date-toggle" checked>
+                </div>
+                <div class="setting-item">
+                    <label for="color-theme">Color Theme:</label>
+                    <select id="color-theme">
+                        <option value="default">Default</option>
+                        <option value="dark">Dark</option>
+                        <option value="light">Light</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label for="font-select">Clock Font:</label>
+                    <select id="font-select">
+                        <option value="Poppins">Poppins</option>
+                        <option value="Roboto">Roboto</option>
+                        <option value="Arial">Arial</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label for="alarm-sound">Alarm Sound:</label>
+                    <select id="alarm-sound">
+                        <option value="default">Default</option>
+                        <option value="beep">Beep</option>
+                        <option value="chime">Chime</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </main>
+    <nav>
+        <a href="#clock" class="active">Clock</a>
+        <a href="#timer">Timer</a>
+        <a href="#stopwatch">Stopwatch</a>
+        <a href="#world-clock">World Clock</a>
+        <a href="#alarm">Alarm</a>
+        <a href="#settings">Settings</a>
+    </nav>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@latest/dist/index.min.js"></script>
+    <script src="app.js"></script>
+</body>
 </html>
