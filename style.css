@@ -102,6 +102,41 @@ h2 {
     margin-top: 10px;
 }
 
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    nav a {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+
+    #clock-display .time {
+        font-size: 3em;
+    }
+
+    #clock-display .date {
+        font-size: 1.2em;
+    }
+
+    .timer-inputs input {
+        width: 50px;
+    }
+
+    .world-clock-item {
+        padding: 10px;
+    }
+
+    .world-clock-timezone {
+        font-size: 1em;
+    }
+
+    .world-clock-time {
+        font-size: 1.2em;
+    }
+}
+
 /* Settings Container */
 .settings-container {
     display: flex;
